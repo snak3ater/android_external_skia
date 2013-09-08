@@ -543,6 +543,9 @@ LOCAL_SRC_FILES += \
 	src/opts/SkUtils_opts_none.cpp
 endif
 
+# Workaround for http://gcc.gnu.org/bugzilla/show_bug.cgi?id=54781
+LOCAL_CFLAGS += $(call cc-ifversion, -eq, 48, -fno-tree-ter)
+
 LOCAL_SHARED_LIBRARIES := \
 	liblog \
 	libcutils \
